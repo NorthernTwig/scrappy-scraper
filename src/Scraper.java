@@ -8,28 +8,29 @@ import java.util.regex.Pattern;
 
 
 public class Scraper {
-    private String text;
+    private String name = "";
+    private HashSet<Page> pages = new HashSet<>();
+    private HashSet<Page> visited = new HashSet<>();
     private HashSet<String> links = new HashSet<>();
-    private int amount = 0;
 
-    public Scraper(String u) { links.add(u); }
+    public Scraper(String u) { links.add("/wiki/" + u); name = u; }
 
     void initialize() {
         try {
             int level = 0;
-            while (level < 1) {
+            while (level < 2) {
                 scrape();
                 getLinks();
                 level++;
             }
-            cleanUp();
+            write();
         } catch(Exception e) {
+            System.out.println(e);
             System.out.println("Something went horribly wrong");
         }
     }
 
     private void scrape() throws IOException {
-        text = "";
         for (String link : links) {
             URL url = new URL("https://en.wikipedia.org" + link);
             BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
@@ -39,20 +40,25 @@ public class Scraper {
                 builder.append(line);
             }
             reader.close();
-            text += builder.toString();
+            pages.add(new Page(link, builder.toString()));
         }
     }
 
-    private void getLinks() {
-        Pattern pattern = Pattern.compile("href=\"(.*?)\"");
-        Matcher matcher = pattern.matcher(text);
-        while (!matcher.hitEnd()) {
-            if (matcher.find()) {
-                String link = text.substring(matcher.start(), matcher.end());
-                String linkUrl = link.substring(link.indexOf("\"") + 1, link.lastIndexOf("\""));
-                if (checkValidLink(linkUrl)) {
-                    amount++;
-                    links.add(linkUrl);
+    private void getLinks() throws IOException {
+        links.clear();
+        for (Page page : pages) {
+            if (visited.contains(page)) continue;
+            visited.add(page);
+            Pattern pattern = Pattern.compile("href=\"(.*?)\"");
+            Matcher matcher = pattern.matcher(page.html);
+            while (!matcher.hitEnd()) {
+                if (matcher.find()) {
+                    String link = page.html.substring(matcher.start(), matcher.end());
+                    String linkUrl = link.substring(link.indexOf("\"") + 1, link.lastIndexOf("\""));
+                    if (checkValidLink(linkUrl)) {
+                        page.addLink(linkUrl);
+                        links.add(linkUrl);
+                    }
                 }
             }
         }
@@ -66,8 +72,23 @@ public class Scraper {
         return wikiMatcher.find() && !colonMatcher.find();
     }
 
-    private void cleanUp() {
-        System.out.println(links.toString());
-        System.out.println(amount);
+    private void write() throws IOException {
+        Folder folder = new Folder(name);
+        folder.createRoot();
+        for (Page page : pages) {
+            folder.setup();
+            folder.createFiles(page.link, page.html, page.links);
+        }
+    }
+
+    private class Page {
+        String link;
+        String html;
+        HashSet<String> links = new HashSet<>();
+
+        Page(String l, String h) { link = l; html = h; }
+        void addLink(String l) {
+            links.add(l);
+        }
     }
 }
