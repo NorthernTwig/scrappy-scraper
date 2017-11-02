@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        Scraper scraper = new Scraper();
+        Scraper scraper = new Scraper("/wiki/Woodworking");
         scraper.initialize();
     }
 }
