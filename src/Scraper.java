@@ -1,94 +1,99 @@
-import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-
 public class Scraper {
-    private String name = "";
-    private HashSet<Page> pages = new HashSet<>();
-    private HashSet<Page> visited = new HashSet<>();
     private HashSet<String> links = new HashSet<>();
+    private HashSet<String> visited = new HashSet<>();
+    private Folder folder;
+    private int amount = 0;
 
-    public Scraper(String u) { links.add("/wiki/" + u); name = u; }
+    public Scraper(String u) {
+        links.add("/wiki/" + u);
+        folder = new Folder(u);
+    }
 
     void initialize() {
-        try {
-            int level = 0;
-            while (level < 2) {
+        folder.createRoot();
+        folder.setup();
+        int level = 0;
+        while (level <= 2) {
+            level++;
+            try {
                 scrape();
                 getLinks();
-                level++;
+            } catch(Exception e) {
+                System.out.println(e);
+                System.out.println("Something went horribly wrong");
             }
-            write();
-        } catch(Exception e) {
-            System.out.println(e);
-            System.out.println("Something went horribly wrong");
         }
     }
 
     private void scrape() throws IOException {
         for (String link : links) {
-            URL url = new URL("https://en.wikipedia.org" + link);
-            BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
-            StringBuilder builder = new StringBuilder();
-            String line;
-            while((line = reader.readLine()) != null) {
-                builder.append(line);
+            try {
+                String name = link.substring(link.lastIndexOf("/"), link.length());
+                if (name.length() <= 1) throw new FileNotFoundException();
+                String html = getPage(link);
+                folder.createHTML(html, name);
+                folder.createNoTags(html, name);
+                System.out.println("Searched: " + amount++ + " of " + links.size());
+                visited.add(link);
+            } catch(FileNotFoundException exception) {
+                System.out.println("Den fanns inte");
             }
-            reader.close();
-            pages.add(new Page(link, builder.toString()));
         }
     }
 
+    private String getPage(String link) throws IOException {
+        URL url = new URL("https://en.wikipedia.org" + link);
+        InputStreamReader reader = new InputStreamReader(url.openStream());
+        Scanner scanner = new Scanner(reader);
+        StringBuilder pageStringBuilder = new StringBuilder();
+
+        while(scanner.hasNextLine()) {
+            pageStringBuilder.append(scanner.nextLine());
+        }
+
+        scanner.close();
+        reader.close();
+
+        return pageStringBuilder.toString();
+    }
+
     private void getLinks() throws IOException {
-        links.clear();
-        for (Page page : pages) {
-            if (visited.contains(page)) continue;
-            visited.add(page);
-            Pattern pattern = Pattern.compile("href=\"(.*?)\"");
-            Matcher matcher = pattern.matcher(page.html);
-            while (!matcher.hitEnd()) {
-                if (matcher.find()) {
-                    String link = page.html.substring(matcher.start(), matcher.end());
-                    String linkUrl = link.substring(link.indexOf("\"") + 1, link.lastIndexOf("\""));
-                    if (checkValidLink(linkUrl)) {
-                        page.addLink(linkUrl);
-                        links.add(linkUrl);
+        List<Path> filePaths = folder.readFiles();
+        Pattern pattern = Pattern.compile("href=\"(.*?)\"");
+        for (Path filePath : filePaths) {
+            if (!visited.contains(filePath.toString())) {
+                visited.add(filePath.toString());
+                StringBuilder builder = new StringBuilder();
+                Files.lines(filePath).forEach(line -> {
+                    if (!visited.contains(line)) {
+                        Matcher matcher = pattern.matcher(line);
+                        while (matcher.find()) {
+                            if (checkValidLink(matcher.group(1))) {
+                                builder.append(matcher.group(1)).append("\n");
+                                links.add(matcher.group(1));
+                            }
+                        }
                     }
-                }
+                });
+                folder.createLink(builder.toString(), filePath.toString());
             }
         }
     }
 
     private boolean checkValidLink(String linkUrl) {
-        Pattern wikiPattern = Pattern.compile("^\\/wiki\\/[a-zA-z]*");
-        Matcher wikiMatcher= wikiPattern.matcher(linkUrl);
-        Pattern colonPattern = Pattern.compile(":");
-        Matcher colonMatcher= colonPattern.matcher(linkUrl);
-        return wikiMatcher.find() && !colonMatcher.find();
-    }
-
-    private void write() throws IOException {
-        Folder folder = new Folder(name);
-        folder.createRoot();
-        for (Page page : pages) {
-            folder.setup();
-            folder.createFiles(page.link, page.html, page.links);
-        }
-    }
-
-    private class Page {
-        String link;
-        String html;
-        HashSet<String> links = new HashSet<>();
-
-        Page(String l, String h) { link = l; html = h; }
-        void addLink(String l) {
-            links.add(l);
-        }
+        Matcher wikiPattern = Pattern.compile("^/wiki/..*").matcher(linkUrl);
+        return wikiPattern.find() && !linkUrl.contains(":") && !linkUrl.contains("#");
     }
 }

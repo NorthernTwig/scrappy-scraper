@@ -1,19 +1,25 @@
-import java.io.BufferedWriter;
+import net.htmlparser.jericho.Renderer;
+import net.htmlparser.jericho.Source;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.util.HashSet;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
+import java.util.stream.Collectors;
 
 class Folder {
     private String root = "./data";
     private String name = "";
 
-    Folder(String n) { name = n; }
+    Folder(String n) {
+        name = n;
+    }
 
     void setup() {
         new File(root + "/" + name).mkdir();
         new File(root + "/" + name + "/links").mkdir();
-        new File(root + "/" + name + "/words").mkdir();
+        new File(root + "/" + name + "/noTags").mkdir();
         new File(root + "/" + name + "/html").mkdir();
     }
 
@@ -21,18 +27,24 @@ class Folder {
         new File(root).mkdir();
     }
 
-    void createFiles(String link, String html, HashSet<String> links) throws IOException {
-        String pageName = link.substring(link.lastIndexOf("/"), link.length());
-        BufferedWriter htmlWriter = new BufferedWriter(new FileWriter(root + "/" + name + "/html/" + pageName));
-        htmlWriter.write(html);
-        htmlWriter.close();
+    List<Path> readFiles() throws IOException {
+        return Files.walk(Paths.get(root + "/" + name + "/html"))
+            .filter(Files::isRegularFile)
+            .collect(Collectors.toList());
+    }
 
-        BufferedWriter linkWriter = new BufferedWriter(new FileWriter(root + "/" + name + "/links/" + pageName));
-        StringBuilder builder = new StringBuilder();
-        for (String s : links) {
-            builder.append(s).append("\n");
-        }
-        linkWriter.write(builder.toString());
-        linkWriter.close();
+    void createHTML(String html, String link) throws IOException {
+        Files.write(Paths.get(root + "/" + name + "/html/" + link), html.getBytes());
+    }
+
+    void createLink(String links, String link) throws IOException {
+        String pageName = link.substring(link.lastIndexOf("/"), link.length());
+        Files.write(Paths.get(root + "/" + name + "/links/" + pageName), links.getBytes());
+    }
+
+    void createNoTags(String html, String link) throws IOException {
+        Source source = new Source(html);
+        Renderer render = new Renderer(source);
+        Files.write(Paths.get(root + "/" + name + "/noTags/" + link), render.toString().getBytes());
     }
 }
