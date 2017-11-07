@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2d6439c7-a459-4ced-8ebd-a112457f47ef" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Cleaner.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Folder.java" afterPath="$PROJECT_DIR$/src/FileHandler.java" />
+    <list default="true" id="2d6439c7-a459-4ced-8ebd-a112457f47ef" name="Default" comment="Initializes folder structure">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Crawler.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Cleaner.java" afterPath="$PROJECT_DIR$/src/Cleaner.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FileHandler.java" afterPath="$PROJECT_DIR$/src/FileHandler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HTTP.java" afterPath="$PROJECT_DIR$/src/HTTP.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main.java" afterPath="$PROJECT_DIR$/src/Main.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Scraper.java" afterPath="$PROJECT_DIR$/src/Scraper.java" />
     </list>
@@ -20,7 +22,28 @@
     <favorites_list name="scrappy-scraper" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="Crawler.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Crawler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="126">
+              <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Cleaner.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Cleaner.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="504">
+              <caret line="41" column="34" lean-forward="false" selection-start-line="41" selection-start-column="34" selection-end-line="41" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -54,12 +77,13 @@
         <option value="$PROJECT_DIR$/src/Folder.java" />
         <option value="$PROJECT_DIR$/src/Model.java" />
         <option value="$PROJECT_DIR$/src/ScraperFactory.java" />
-        <option value="$PROJECT_DIR$/src/FileHandler.java" />
-        <option value="$PROJECT_DIR$/src/Crawler.java" />
-        <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/View.java" />
         <option value="$PROJECT_DIR$/src/Cleaner.java" />
+        <option value="$PROJECT_DIR$/src/FileHandler.java" />
+        <option value="$PROJECT_DIR$/src/HTTP.java" />
+        <option value="$PROJECT_DIR$/src/Crawler.java" />
         <option value="$PROJECT_DIR$/src/Scraper.java" />
+        <option value="$PROJECT_DIR$/src/Main.java" />
       </list>
     </option>
   </component>
@@ -72,7 +96,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="9" />
     <option name="y" value="10" />
-    <option name="width" value="947" />
+    <option name="width" value="1902" />
     <option name="height" value="1061" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -91,10 +115,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="AndroidView" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -102,10 +123,18 @@
               <item name="scrappy-scraper" type="b2602c69:ProjectViewProjectNode" />
               <item name="scrappy-scraper" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="scrappy-scraper" type="b2602c69:ProjectViewProjectNode" />
+              <item name="scrappy-scraper" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -246,29 +275,41 @@
       <workItem from="1509696950566" duration="42792000" />
       <workItem from="1509888376630" duration="20244000" />
       <workItem from="1509968325260" duration="13948000" />
-      <workItem from="1509996366386" duration="51000" />
+      <workItem from="1509996366386" duration="108000" />
+      <workItem from="1510012744614" duration="3533000" />
+      <workItem from="1510051351336" duration="4710000" />
+      <workItem from="1510069422864" duration="1972000" />
     </task>
+    <task id="LOCAL-00001" summary="Added http class">
+      <created>1510012917214</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1510012917214</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="115162000" />
+    <option name="totallyTimeSpent" value="125434000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="9" y="10" width="947" height="1061" extended-state="0" />
+    <frame x="9" y="10" width="1902" height="1061" extended-state="0" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18491736" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15082644" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.42045453" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26617178" sideWeight="0.4950495" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1564805" sideWeight="0.4950495" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -280,7 +321,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3264463" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -291,6 +331,11 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added http class" />
+    <MESSAGE value="Initializes folder structure" />
+    <option name="LAST_COMMIT_MESSAGE" value="Initializes folder structure" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <option name="time" value="29" />
@@ -298,81 +343,187 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/data/Whiskey/html/2nd_millennium_BC" />
-    <entry file="file://$PROJECT_DIR$/data/Whiskey/html/B%C3%A9n%C3%A9dictine" />
-    <entry file="file://$PROJECT_DIR$/data/Whiskey/html/Alcohol_industry" />
-    <entry file="file://$PROJECT_DIR$/src/Model.java" />
-    <entry file="file://$PROJECT_DIR$/data/Whiskey/links/Whiskey" />
-    <entry file="file://$PROJECT_DIR$/data/Whiskey/words/Whiskey" />
-    <entry file="file://$PROJECT_DIR$/data/Whiskey/noTags/Whiskey" />
-    <entry file="file://$PROJECT_DIR$/data/Whiskey/words/2nd_millennium_BC" />
-    <entry file="file://$PROJECT_DIR$/data/Whiskey/noTags/Acts_of_Union_1707" />
-    <entry file="file://$PROJECT_DIR$/data/Whiskey/html/%C8%9Auic%C4%83" />
-    <entry file="file://$PROJECT_DIR$/data/Whiskey/noTags/2nd_millennium_BC" />
-    <entry file="file://$PROJECT_DIR$/data/Programming_language/html/Algorithm" />
-    <entry file="file://$PROJECT_DIR$/data/Programming_language/html/Programming_language" />
-    <entry file="file://$PROJECT_DIR$/data/Programming_language/links/Programming_language" />
-    <entry file="file://$PROJECT_DIR$/data/Programming_language/noTags/Programming_language" />
-    <entry file="file://$PROJECT_DIR$/data/Programming_language/words/Programming_language" />
-    <entry file="file://$PROJECT_DIR$/src/ScraperFactory.java" />
-    <entry file="file://$PROJECT_DIR$/src/Crawler.java" />
-    <entry file="file://$PROJECT_DIR$/src/View.java" />
-    <entry file="file://$PROJECT_DIR$/data/Woodworking/html/Analog_forestry" />
-    <entry file="file://$PROJECT_DIR$/data/Woodworking/links/Aleppo_Pine" />
-    <entry file="file://$PROJECT_DIR$/data/Woodworking/links/American_Association_of_Woodturners" />
-    <entry file="file://$PROJECT_DIR$/data/Woodworking/links/Analog_forestry" />
-    <entry file="file://$PROJECT_DIR$/data/Woodworking/links/Coping_(joinery)" />
-    <entry file="file://$PROJECT_DIR$/data/Woodworking/links/Forestry_law" />
-    <entry file="file://$PROJECT_DIR$/data/Woodworking/links/French_Academy_of_Sciences" />
-    <entry file="file://$PROJECT_DIR$/data/Woodworking/links/Pulp_and_paper_industry" />
-    <entry file="file://$PROJECT_DIR$/data/Woodworking/links/Router_(woodworking)" />
-    <entry file="file://$PROJECT_DIR$/data/Woodworking/links/Roy_Underhill" />
     <entry file="file://$PROJECT_DIR$/data/Woodworking/links/Predynastic_Egypt" />
     <entry file="file://$PROJECT_DIR$/data/Woodworking/links/Museo_Egizio" />
-    <entry file="file://$PROJECT_DIR$/data/Woodworking/links/Mousterian" />
     <entry file="file://$PROJECT_DIR$/data/Woodworking/links/Maple" />
     <entry file="file://$PROJECT_DIR$/data/Woodworking/links/Mallet" />
     <entry file="file://$PROJECT_DIR$/data/Woodworking/links/Main_Page" />
     <entry file="file://$PROJECT_DIR$/data/Woodworking/links/Manufacturing" />
     <entry file="file://$PROJECT_DIR$/data/Woodworking/noTags/Alvar_Aalto" />
-    <entry file="file://$PROJECT_DIR$/data/Woodworking/words/Ancient_Egypt" />
     <entry file="file://$PROJECT_DIR$/data/Woodworking/words/Animal_glue" />
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="14">
-          <caret line="1" column="44" lean-forward="false" selection-start-line="1" selection-start-column="44" selection-end-line="1" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Scraper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="722">
-          <caret line="81" column="57" lean-forward="true" selection-start-line="81" selection-start-column="57" selection-end-line="81" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Cleaner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="24" column="39" lean-forward="false" selection-start-line="24" selection-start-column="27" selection-end-line="24" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/FileHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="20" column="18" lean-forward="false" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/Woodworking/html/Abrasive" />
-    <entry file="file://$PROJECT_DIR$/data/Woodworking/words/Adze" />
     <entry file="file://$PROJECT_DIR$/data/Woodworking/words/Alder" />
     <entry file="file://$PROJECT_DIR$/data/Woodworking/noTags/Agroforestry" />
     <entry file="file://$PROJECT_DIR$/data/Woodworking/noTags/Alan_Peters" />
     <entry file="file://$PROJECT_DIR$/data/Woodworking/noTags/Aleppo_Pine" />
     <entry file="file://$PROJECT_DIR$/data/Woodworking/noTags/Adze" />
+    <entry file="file://$PROJECT_DIR$/data/Woodworking/html/Copper" />
+    <entry file="file://$PROJECT_DIR$/data/Woodworking/words/Woodworking" />
+    <entry file="file://$PROJECT_DIR$/data/Woodworking/words/Copper" />
+    <entry file="file://$PROJECT_DIR$/data/Woodworking/links/Mousterian" />
+    <entry file="file://$PROJECT_DIR$/data/Woodworking/links/Birdsmouth_joint" />
+    <entry file="file://$PROJECT_DIR$/data/Woodworking/html/Mousterian" />
+    <entry file="file://$PROJECT_DIR$/data/Woodworking/html/Natural_rubber" />
+    <entry file="file://$PROJECT_DIR$/data/Woodworking/html/Paint" />
+    <entry file="file://$PROJECT_DIR$/data/Woodworking/html/Woodworking" />
+    <entry file="file://$PROJECT_DIR$/data/Woodworking/html/Birdsmouth_joint" />
+    <entry file="file://$PROJECT_DIR$/data/Woodworking/noTags/Veneer_saw" />
+    <entry file="file://$PROJECT_DIR$/data/Woodworking/noTags/John_Makepeace" />
+    <entry file="file://$PROJECT_DIR$/data/Woodworking/noTags/Flower_pot" />
+    <entry file="file://$PROJECT_DIR$/data/Woodworking/noTags/Chinese_furniture" />
+    <entry file="file://$PROJECT_DIR$/data/Woodworking/noTags/Chitemene" />
+    <entry file="file://$PROJECT_DIR$/data/Woodworking/noTags/Circular_saw" />
+    <entry file="file://$PROJECT_DIR$/data/Woodworking/words/Adze" />
+    <entry file="file://$PROJECT_DIR$/data/Woodworking/words/Ancient_Egypt" />
+    <entry file="file://$PROJECT_DIR$/data/Woodworking/links/Woodworking" />
     <entry file="file://$PROJECT_DIR$/data/Woodworking/html/Adze" />
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FileHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="448">
+          <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HTTP.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="15" column="24" lean-forward="false" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Scraper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="12" column="22" lean-forward="false" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/Woodworking/html/Abrasive">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/Woodworking/words/%C3%89b%C3%A9niste">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/China/noTags/Buddhist_cuisine">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/China/noTags/Burmese_Way_to_Socialism">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/Woodworking/words/Float_(woodworking)">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/Woodworking/words/Folding_chair">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/Woodworking/words/Clog">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/Woodworking/words/Agroforestry">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/Woodworking/words/Acacia">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/Woodworking/words/Abrasive">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/Woodworking/noTags/%C3%89b%C3%A9niste">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Cleaner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="41" column="34" lean-forward="false" selection-start-line="41" selection-start-column="34" selection-end-line="41" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Crawler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
   </component>
   <component name="masterDetails">
     <states>

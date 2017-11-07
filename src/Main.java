@@ -1,6 +1,9 @@
 public class Main {
     public static void main(String[] args) {
-        new Scraper("Woodworking").initialize();
-//        new Scraper("Whiskey").initialize();
+        Crawler.start("Woodworking");
+        Crawler.start("Whiskey");
+        Crawler.start("China");
+        Crawler.start("Lina_Ben_Mhenni");
+        Crawler.start("Arab_Spring");
     }
 }

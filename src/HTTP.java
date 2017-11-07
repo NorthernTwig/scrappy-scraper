@@ -3,7 +3,7 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.Scanner;
 
-public class HTTP {
+class HTTP {
     static String get(String link) throws IOException {
         URL url = new URL("https://en.wikipedia.org" + link);
         Scanner scanner = new Scanner(new InputStreamReader(url.openStream()));
@@ -14,7 +14,6 @@ public class HTTP {
         }
 
         scanner.close();
-
         return pageStringBuilder.toString();
     }
 }

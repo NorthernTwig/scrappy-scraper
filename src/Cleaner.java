@@ -47,7 +47,7 @@ class Cleaner {
         return wikiPattern.find() && !linkUrl.contains(":") && !linkUrl.contains("#");
     }
 
-    public static String preprocessText(String text) {
+    static String preprocessText(String text) {
         text = text.toLowerCase();
         text = text.replaceAll("\r", " ");
         text = text.replaceAll("\n", " ");

@@ -1,12 +1,9 @@
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Scanner;
 
 class Scraper {
     private int MAX_LEVEL = 1;
@@ -25,8 +22,6 @@ class Scraper {
     }
 
     void initialize() {
-        fileHandler.createRoot();
-        fileHandler.setup();
         while (level <= MAX_LEVEL) {
             level++;
             try {
@@ -45,8 +40,10 @@ class Scraper {
                 if (!visited.contains(link)) {
                     String name = link.substring(link.lastIndexOf("/"), link.length());
                     if (name.length() <= 1) throw new FileNotFoundException();
-                    fileHandler.createHTML(getPage(link), name);
+                    String html = HTTP.get(link);
+                    fileHandler.createHTML(html, name);
                     visited.add(link);
+                    generateFiles(html, name);
                     displayProgress();
                 }
             } catch(FileNotFoundException exception) {
@@ -55,24 +52,18 @@ class Scraper {
         }
     }
 
-    private void displayProgress() {
-        System.out.println("Searched: " + amount++ + " of " + links.size() + " on level: " + level);
+    private void generateFiles(String html, String name) throws IOException {
+        String htmlRender = Cleaner.preprocessText(Cleaner.getHtmlRender(html));
+        String words = Cleaner.getWords(htmlRender);
+        HashSet<String> hashLinks = Cleaner.getHashLinks(html);
+        String subLinks = Cleaner.getLinks(hashLinks);
+        fileHandler.createNoTags(htmlRender, name);
+        fileHandler.createWordBag(words, name);
+        fileHandler.createLink(subLinks, name);
     }
 
-    private String getPage(String link) throws IOException {
-        URL url = new URL("https://en.wikipedia.org" + link);
-        InputStreamReader reader = new InputStreamReader(url.openStream());
-        Scanner scanner = new Scanner(reader);
-        StringBuilder pageStringBuilder = new StringBuilder();
-
-        while(scanner.hasNextLine()) {
-            pageStringBuilder.append(scanner.nextLine());
-        }
-
-        scanner.close();
-        reader.close();
-
-        return pageStringBuilder.toString();
+    private void displayProgress() {
+        System.out.println("Searched: " + amount++ + " of " + links.size() + " on level: " + level);
     }
 
     private void readFiles() throws IOException {
@@ -81,25 +72,14 @@ class Scraper {
         for (Path filePath : filePaths) {
             if (!visited.contains(filePath.toString())) {
                 visited.add(filePath.toString());
-                generateFiles(filePath);
+                addLinksToVisit(filePath);
             }
         }
     }
 
-    private void generateFiles(Path filePath) throws IOException {
+    private void addLinksToVisit(Path filePath) throws IOException {
         String html = Files.readAllLines(filePath).toString();
         HashSet<String> hashLinks = Cleaner.getHashLinks(html);
-        String htmlRender = Cleaner.preprocessText(Cleaner.getHtmlRender(html));
-        String subLinks = Cleaner.getLinks(hashLinks);
-        String words = Cleaner.getWords(htmlRender);
-        addLinksToVisit(hashLinks);
-
-        fileHandler.createNoTags(htmlRender, filePath.toString());
-        fileHandler.createWordBag(words, filePath.toString());
-        fileHandler.createLink(subLinks, filePath.toString());
-    }
-
-    private void addLinksToVisit(HashSet<String> hashLinks) {
         links.addAll(hashLinks);
     }
 }
