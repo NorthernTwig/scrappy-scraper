@@ -46,8 +46,9 @@ class Scraper {
                     generateFiles(html, name);
                     displayProgress();
                 }
-            } catch(FileNotFoundException exception) {
-                System.out.println("Could not find page");
+            } catch(FileNotFoundException e) {
+                String name = e.getMessage().substring(e.getMessage().lastIndexOf("/"), e.getMessage().length());
+                System.out.println("Could not find page: " + name);
             }
         }
     }
