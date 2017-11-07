@@ -1,3 +1,5 @@
+import utils.FileHandler;
+
 class Crawler {
     static void start(String name) {
         FileHandler fileHandler = new FileHandler(name);
