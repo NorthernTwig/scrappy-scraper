@@ -1,3 +1,5 @@
+package utils;
+
 import net.htmlparser.jericho.Renderer;
 import net.htmlparser.jericho.Source;
 import java.io.IOException;
@@ -5,14 +7,14 @@ import java.util.HashSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-class Cleaner {
-    static String getHtmlRender(String html) {
+public class Cleaner {
+    public static String getHtmlRender(String html) {
         Source source = new Source(html);
         Renderer render = new Renderer(source);
         return render.toString();
     }
 
-    static String getWords(String html) throws IOException {
+    public static String getWords(String html) throws IOException {
         Pattern pattern = Pattern.compile("[a-zA-Z]+((-)?[a-zA-Z]+)*");
         StringBuilder builder = new StringBuilder();
         Matcher matcher = pattern.matcher(html);
@@ -22,7 +24,7 @@ class Cleaner {
         return builder.toString();
     }
 
-    static HashSet<String> getHashLinks(String html) throws IOException {
+    public static HashSet<String> getHashLinks(String html) throws IOException {
         Pattern hrefPattern = Pattern.compile("href=\"(.*?)\"");
         HashSet<String> links = new HashSet<>();
         Matcher matcher = hrefPattern.matcher(html);
@@ -35,7 +37,7 @@ class Cleaner {
         return links;
     }
 
-    static String getLinks(HashSet<String> links) throws IOException {
+    public static String getLinks(HashSet<String> links) throws IOException {
         StringBuilder builder = new StringBuilder();
         for (String link : links) {
             builder.append(link).append("\n");
@@ -49,7 +51,7 @@ class Cleaner {
         return wikiPattern.find();
     }
 
-    static String preprocessText(String text) {
+    public static String preprocessText(String text) {
         text = text.toLowerCase();
         text = text.replaceAll("\r", " ");
         text = text.replaceAll("\n", " ");
