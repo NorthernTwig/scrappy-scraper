@@ -27,8 +27,9 @@ class Cleaner {
         HashSet<String> links = new HashSet<>();
         Matcher matcher = hrefPattern.matcher(html);
         while (matcher.find()) {
-            if (checkValidLink(matcher.group(1))) {
-                links.add(matcher.group(1));
+            String link = matcher.group(1);
+            if (checkValidLink(link)) {
+                links.add(link);
             }
         }
         return links;
@@ -43,8 +44,9 @@ class Cleaner {
     }
 
     private static boolean checkValidLink(String linkUrl) {
+        if (linkUrl.contains("/wiki/Main_Page") || linkUrl.contains("#") || linkUrl.contains(":")) return false;
         Matcher wikiPattern = Pattern.compile("^/wiki/..*").matcher(linkUrl);
-        return wikiPattern.find() && !linkUrl.contains(":") && !linkUrl.contains("#");
+        return wikiPattern.find();
     }
 
     static String preprocessText(String text) {
