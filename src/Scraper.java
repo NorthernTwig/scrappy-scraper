@@ -1,3 +1,8 @@
+import utils.Cleaner;
+import utils.FileHandler;
+import utils.HTTP;
+import utils.Name;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -29,7 +34,6 @@ class Scraper {
                 readFiles();
             } catch(Exception e) {
                 System.out.println(e.getMessage());
-                System.out.println("Something went horribly wrong");
             }
         }
     }
@@ -38,7 +42,7 @@ class Scraper {
         for (String link : links) {
             try {
                 if (!visited.contains(link)) {
-                    String name = link.substring(link.lastIndexOf("/"), link.length());
+                    String name = Name.get(link);
                     if (name.length() <= 1) throw new FileNotFoundException();
                     String html = HTTP.get(link);
                     fileHandler.createHTML(html, name);
@@ -47,7 +51,7 @@ class Scraper {
                     displayProgress();
                 }
             } catch(FileNotFoundException e) {
-                String name = e.getMessage().substring(e.getMessage().lastIndexOf("/"), e.getMessage().length());
+                String name = Name.get(e.getMessage());
                 System.out.println("Could not find page: " + name);
             }
         }
