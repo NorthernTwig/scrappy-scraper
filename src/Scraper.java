@@ -28,7 +28,6 @@ class Scraper {
 
     void initialize() {
         while (level <= MAX_LEVEL) {
-            level++;
             try {
                 scrape();
                 readFiles();
@@ -38,7 +37,13 @@ class Scraper {
         }
     }
 
+
+    /**
+     * Scrapes the supplied links
+     * @throws IOException if folder structure is malformed
+     */
     private void scrape() throws IOException {
+        level++;
         for (String link : links) {
             try {
                 if (!visited.contains(link)) {
@@ -51,12 +56,20 @@ class Scraper {
                     displayProgress();
                 }
             } catch(FileNotFoundException e) {
+
+                // If wikipedia removes a page - status 404 will be returned
                 String name = Name.get(e.getMessage());
                 System.out.println("Could not find page: " + name);
             }
         }
     }
 
+    /**
+     * Generates all necessary files
+     * @param html A text blob representing html
+     * @param name The category
+     * @throws IOException if folder structure is malformed
+     */
     private void generateFiles(String html, String name) throws IOException {
         String htmlRender = Cleaner.preprocessText(Cleaner.getHtmlRender(html));
         String words = Cleaner.getWords(htmlRender);
@@ -71,6 +84,10 @@ class Scraper {
         System.out.println("Searched: " + amount++ + " of " + links.size() + " on level: " + level);
     }
 
+    /**
+     * Reads all files in the HTML folder with the supplied category name
+     * @throws IOException If there is something wrong with the structure
+     */
     private void readFiles() throws IOException {
         List<Path> filePaths = fileHandler.read();
 
@@ -82,6 +99,11 @@ class Scraper {
         }
     }
 
+    /**
+     * Adds new links to visit from read file
+     * @param filePath is the path to a file containing html
+     * @throws IOException is there is something wrong with the structure
+     */
     private void addLinksToVisit(Path filePath) throws IOException {
         String html = Files.readAllLines(filePath).toString();
         HashSet<String> hashLinks = Cleaner.getHashLinks(html);
