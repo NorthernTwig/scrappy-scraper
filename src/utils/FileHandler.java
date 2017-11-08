@@ -37,6 +37,11 @@ public class FileHandler {
         new File(ROOT).mkdir();
     }
 
+    /**
+     * Reads all files in html folder
+     * @return A list of paths to each file
+     * @throws IOException if the structure is malformed
+     */
     public List<Path> read() throws IOException {
         return Files.walk(Paths.get(ROOT + "/" + name + HTML))
             .filter(Files::isRegularFile)
@@ -44,21 +49,22 @@ public class FileHandler {
     }
 
     public void createHTML(String html, String link) throws IOException {
-        Files.write(Paths.get(ROOT + "/" + name + HTML + "/" + link), html.getBytes());
+        createFile(HTML, link, html);
     }
 
     public void createLink(String links, String link) throws IOException {
-        String pageName = link.substring(link.lastIndexOf("/"), link.length());
-        Files.write(Paths.get(ROOT + "/" + name + LINKS + "/" + pageName), links.getBytes());
+        createFile(LINKS, Name.get(link), links);
     }
 
     public void createNoTags(String html, String link) throws IOException {
-        String pageName = link.substring(link.lastIndexOf("/"), link.length());
-        Files.write(Paths.get(ROOT + "/" + name + NOTAGS + "/" + pageName), html.getBytes());
+        createFile(NOTAGS, Name.get(link), html);
     }
 
     public void createWordBag(String words, String link) throws IOException {
-        String pageName = link.substring(link.lastIndexOf("/"), link.length());
-        Files.write(Paths.get(ROOT + "/" + name + WORDS + "/" + pageName), words.getBytes());
+        createFile(WORDS, Name.get(link), words);
+    }
+
+    private void createFile(String type, String category, String content) throws IOException {
+        Files.write(Paths.get(ROOT + "/" + name + type + "/" + category), content.getBytes());
     }
 }
