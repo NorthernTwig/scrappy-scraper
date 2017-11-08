@@ -37,7 +37,6 @@ class Scraper {
         }
     }
 
-
     /**
      * Scrapes the supplied links
      * @throws IOException if folder structure is malformed
